@@ -1,0 +1,7 @@
+plugins {
+  id 'com.axelor.app-module'
+}
+
+axelor {
+  title = "Axelor :: GST"
+}

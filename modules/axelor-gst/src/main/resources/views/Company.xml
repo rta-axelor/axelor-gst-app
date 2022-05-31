@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+	<grid name="company-grid" title="Companies" model="com.axelor.gst.db.Company"> 
+	  <field name="name" /> 
+	  <field name="logo"/>
+	  <field name="contact"/>
+	  <field name="GSTIN"/>
+	  <field name="bankaccount"/>
+	  <field name="address"/>
+	  
+	</grid>
+	<form name="company-form" title="Company" model="com.axelor.gst.db.Company">
+		<panel name="mainPanel" title="Main Panel">
+			<field name="name"/>
+			<field name="logo" widget="image"/>
+			<field name="contact"/>
+			<field name="GSTIN"/>
+			<field name="bankaccount"/>
+	 		<field name="address"/>
+			
+		</panel>
+	</form>
+	
+	
+</object-views>

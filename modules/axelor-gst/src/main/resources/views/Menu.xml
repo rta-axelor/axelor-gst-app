@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+	<menuitem title="GST" name="gst-root"/>
+	
+	<menuitem title="Companies" name="gst-root-company" parent="gst-root" action="action.gst.root.company" />
+	<action-view name="action.gst.root.company" title="Companies" model="com.axelor.gst.db.Company">
+		<view type="grid" name="company-grid"/>
+		<view type="form" name="company-form"/>
+	</action-view>
+	
+	<menuitem title="Contacts" name="gst-root-contact" parent="gst-root" action="action.gst.root.contact"/>
+	<action-view name="action.gst.root.contact" title="Contacts" model="com.axelor.gst.db.Contact">
+		<view type="grid" name="contact-grid"/>
+		<view type="form" name="contact-form"/>
+		
+	</action-view>
+	<menuitem title="Parties" name="gst-root-party" parent="gst-root" action="action.gst.root.party"/>
+	<action-view name="action.gst.root.party" title="Parties" model="com.axelor.gst.db.Party">
+		<view type="grid" name="party-grid"/>
+		<view type="form" name="party-form"/>
+	</action-view>
+	
+	
+</object-views>
