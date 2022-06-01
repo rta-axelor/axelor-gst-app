@@ -5,9 +5,14 @@
 
 	<module package="com.axelor.gst.db" name="gst"/>
 	<entity name="Address">
-	
-		<string name="line1" title="Line 1"/>
+		<string name="type" title="Type" selection="gst.address.address.type" required="true"/>
+		<string name="line1" title="Line 1" required="true"/>
 		<string name="line2" title="Line 2"/>
+		<many-to-one ref="com.axelor.gst.db.City" name="city" title="City" required="true"/>
+		<many-to-one ref="com.axelor.gst.db.State" name="state" title="State"/>
+		<many-to-one ref="com.axelor.gst.db.Country" name="country" title="Country" required="true"/>
+		<string name="pincode" title="PinCode"/>
+		
 		
 	</entity>
 		

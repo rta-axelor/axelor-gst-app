@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
+
+	<module package="com.axelor.gst.db" name="gst"/>
+		<entity name="Invoice">
+			<many-to-one ref="com.axelor.gst.db.Company" name="company" title="Company"/>
+			<string name="reference" title="Reference"/>
+			<datetime name="date" title="date"/>
+			<integer name="priority" title="Priority"/>
+			<many-to-one ref="com.axelor.gst.db.Party" name="party" title="Party"/>
+			<many-to-one ref="com.axelor.gst.db.PartyContact" name="partyContact" title="Party Contact"/>
+			
+		</entity>
+
+</domain-models>
