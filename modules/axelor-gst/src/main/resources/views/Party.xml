@@ -17,12 +17,11 @@
 	<grid model="com.axelor.gst.db.Party" title="Parties" name="party-grid">
 		
 		<field name="name"/>
-		<field name="type"/>
 		<field name="customer"/>
 		<field name="supplier"/>
 		<field name="partyGstin"/>
-		<field name="contactList"/>
-		<field name="addressList"/>
+		<field name="contactList" widget=""/>
+		<field name="addressList" widget=""/>
 		
 	</grid>
 	
@@ -31,7 +30,7 @@
 		<panel>
 		
 			<field name="name"/>
-			<field name="type"/>
+			<field name="typeSelect"/>
 			<field name="customer"/>
 			<field name="supplier"/>
 			<field name="partyGstin"/>

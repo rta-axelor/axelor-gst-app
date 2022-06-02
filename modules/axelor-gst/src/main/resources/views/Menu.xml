@@ -57,4 +57,11 @@
 		<view type="grid" name="product-grid"/>
 		<view type="form" name="product-form"/>
 	</action-view>
+	
+	<menuitem title="Invoices" name="gst-root-invoice" parent="gst-root" action="action.gst.root.invoice"/>
+	<action-view name="action.gst.root.invoice" title="Invoices" model="com.axelor.gst.db.Invoice">
+		<view type="grid" name="invoice-grid"/>
+		<view type="form" name="invoice-form"/>
+	</action-view>
+	
 </object-views>

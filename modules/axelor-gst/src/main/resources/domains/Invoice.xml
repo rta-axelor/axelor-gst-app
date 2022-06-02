@@ -5,12 +5,21 @@
 
 	<module package="com.axelor.gst.db" name="gst"/>
 		<entity name="Invoice">
-			<many-to-one ref="com.axelor.gst.db.Company" name="company" title="Company"/>
-			<string name="reference" title="Reference"/>
-			<datetime name="date" title="date"/>
+			<many-to-one ref="com.axelor.gst.db.Company" name="company" title="Company" required="true"/>
+			<string name="reference" title="Reference" readonly="true"/>
+			<!-- <datetime name="date" title="date"/> -->
 			<integer name="priority" title="Priority"/>
-			<many-to-one ref="com.axelor.gst.db.Party" name="party" title="Party"/>
-			<many-to-one ref="com.axelor.gst.db.PartyContact" name="partyContact" title="Party Contact"/>
+			<many-to-one ref="com.axelor.gst.db.Party" name="party" title="Party" required="true"/>
+			<many-to-one ref="com.axelor.gst.db.Contact" name="partyContact" title="Party Contact"/>
+			<many-to-one ref="com.axelor.gst.db.Address" name="invoiceAddress" title="Invoice Address" required="true"/>
+			<many-to-one ref="com.axelor.gst.db.Address" name="shippingAddress" title="Shipping Address"/>
+			<decimal name="netAmount" title="Net Amount" readonly="true"/>
+			<decimal name="netIGST" title="Net IGST" readonly="true"/>
+			<decimal name="netCSGT" title="Net CSGT" readonly="true"/>
+			<decimal name="netSGST" title="Net SGST" readonly="true"/>
+			<decimal name="grossAmount" title="Gross Amount" readonly="true"/>
+			<one-to-many ref="com.axelor.gst.db.InvoiceLine" name="invoiceItemsList" title="Invoice Items"/>
+			
 			
 		</entity>
 

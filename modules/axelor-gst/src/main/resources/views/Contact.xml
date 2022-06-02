@@ -6,7 +6,6 @@
 	<grid model="com.axelor.gst.db.Contact" title="Contacts" name="contact-grid">
 		
 		<field name="name"/>
-		<field name="type"/>
 		<field name="primaryEmail"/>
 		<field name="secondaryEmail"/>
 		<field name="primaryPhone"/>
@@ -17,7 +16,7 @@
 		<panel>
 			
 			<field name="name"/>
-			<field name="type"/>
+			<field name="typeSelect"/>
 			<field name="primaryEmail"/>
 			<field name="secondaryEmail"/>
 			<field name="primaryPhone"/>

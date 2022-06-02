@@ -7,7 +7,7 @@
  		<field name="bank"/>
  		<field name="accountNo"/>
  		<field name="ifsc"/>
- 		<field name="type"/>
+ 		
  		<field name="address"/>
  	</grid>
  	
@@ -16,7 +16,7 @@
 	 		<field name="bank"/>
 	 		<field name="accountNo"/>
 	 		<field name="ifsc"/>
-	 		<field name="type"/>
+	 		<field name="typeSelect"/>
 	 		<field name="address"/>
 	 	</panel>
  	</form>

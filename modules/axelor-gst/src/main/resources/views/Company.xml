@@ -6,7 +6,6 @@
 	<grid name="company-grid" title="Companies" model="com.axelor.gst.db.Company"> 
 	  
 	  <field name="name" /> 
-	 <!--  <field name="logo"/> -->
 	  <field name="contactList"/>
 	  <field name="gstin"/>
 	  <!-- <field name="bankaccount"/> -->

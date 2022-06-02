@@ -9,12 +9,12 @@
   
 	<string name="reference" title="Reference" readonly="true"/>
   	<string name="name" title="Name" required="true"/>
-  	<string name="type" title="Type" required="true" selection="gst.party.party.type"/>
+  	<string name="typeSelect" title="Type" required="true" selection="gst.party.type.select"/>
   	<boolean name="customer" title="Customer"/>
   	<boolean name="supplier" title="Supplier"/>
   	<string name="gstin" title="GSTIN" min="15" max="15"/>
   	
-  	<one-to-many ref="com.axelor.gst.db.Contact" name="contactList" title="Contact"/>
+  	<one-to-many ref="com.axelor.gst.db.Contact" name="contactList" title="Contact" />
   	<one-to-many ref="com.axelor.gst.db.Address" name="addressList" title="Address"/>
 
   	

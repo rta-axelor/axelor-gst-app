@@ -3,23 +3,23 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
-	<selection name="gst.bankaccount.bankaccount.type">
+	<selection name="gst.bankaccount.type.select">
 		<option value="saving">Saving</option>
 		<option value="current">Current</option>
 	</selection>
 	
-	<selection name="gst.party.party.type">
+	<selection name="gst.party.type.select">
 		<option value="individual">Individual</option>
 		<option value="company">Company</option>
 	</selection>
 	
-	<selection name="gst.contact.contact.type">
+	<selection name="gst.contact.type.select">
 		<option value="primary">Primary</option>
 		<option value="secondary">Secondary</option>
 		<option value="others">Others</option>
 	</selection>
 	
-	<selection name="gst.address.address.type">
+	<selection name="gst.address.type.select">
 		<option value="default">Default</option>
 		<option value="invoice">Invoice</option>
 		<option value="shipping">Shipping</option>
