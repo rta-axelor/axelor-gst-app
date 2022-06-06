@@ -4,12 +4,12 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
   
   <module package="com.axelor.gst.db" name="gst"/>
-  <entity name="State">
-  	
-  		<string name="name" title="Name" required="true"/>
-  		<string name="country" title="Country" required="true"/>
-  		
-  	
-  </entity>
+	  <entity name="State">
+	  	
+	  		<string name="name" title="Name" required="true"/>
+	  		<string name="country" title="Country" required="true"/>
+	  		
+	  	
+	  </entity>
   
 </domain-models>

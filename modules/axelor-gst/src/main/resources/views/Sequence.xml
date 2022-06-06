@@ -9,6 +9,7 @@
   		<field name="padding"/>
   		<field name="nextNumber"/>
   	</grid>
+  	
   	<form model="com.axelor.gst.db.Sequence" title="Sequence" name="sequence-form">
   		<panel>
   			<field name="prefix"/>

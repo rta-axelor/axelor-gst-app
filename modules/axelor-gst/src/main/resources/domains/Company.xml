@@ -5,12 +5,13 @@
 
   <module package="com.axelor.gst.db" name="gst"/>
  
+ 
   <entity name="Company" >
   
   	<string name="name" required="true" title="Name"/>
   	
   	<many-to-one ref="com.axelor.meta.db.MetaFile" name="logo" title="Logo"/>
-  	<one-to-many ref="com.axelor.gst.db.Contact" name="contactList" title="Contact" mappedBy="company"/>
+  	<one-to-many ref="com.axelor.gst.db.Contact" name="contactList" title="Contact"/>
   	
   	<string name="gstin" min="15" max="15" title="GSTIN"/>
   	

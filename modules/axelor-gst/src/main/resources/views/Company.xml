@@ -8,7 +8,7 @@
 	  <field name="name" /> 
 	  <field name="contactList"/>
 	  <field name="gstin"/>
-	  <!-- <field name="bankaccount"/> -->
+	  <field name="bankaccount"/>
 	  <field name="address"/>
 	  
 	</grid>
@@ -21,7 +21,7 @@
 			<field name="logo" widget="image"/>
 			<field name="contactList"/>
 			<field name="gstin"/>
-			<!-- <field name="bankaccount"/> -->
+			<field name="bankaccount"/>
 	 		<field name="address"/>
 			
 		</panel>

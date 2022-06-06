@@ -25,7 +25,7 @@
 		
 	</grid>
 	
-	<form model="com.axelor.gst.db.Party" title="Party" name="party-form">
+	<form model="com.axelor.gst.db.Party" title="Party" name="party-form" onNew="action-party-record-onnew" >
 	
 		<panel>
 		
@@ -39,7 +39,10 @@
 			
 		</panel>
 	</form>
-
+	<action-record name="action-party-record-onnew" model="com.axelor.gst.db.Party">
+		<field name="typeSelect" expr="company"/>
+	</action-record>
+	
 
   </object-views>
   

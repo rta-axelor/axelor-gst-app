@@ -4,15 +4,23 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
 
 	<module package="com.axelor.gst.db" name="gst"/>
+	<enum name="STATUS">
+		<item name="DRAFT" value="draft"/>
+		<item name="VALIDATED" value="validated"/>
+		<item name="PAID" value="paid"/>
+		<item name="CANCELLED" value="cancelled"/>
+	</enum>
 		<entity name="Invoice">
+			<enum name="status" ref="STATUS"/>
 			<many-to-one ref="com.axelor.gst.db.Company" name="company" title="Company" required="true"/>
 			<string name="reference" title="Reference" readonly="true"/>
-			<!-- <datetime name="date" title="date"/> -->
+			<datetime name="dateTime" title="Date Time"/>
 			<integer name="priority" title="Priority"/>
-			<many-to-one ref="com.axelor.gst.db.Party" name="party" title="Party" required="true"/>
+			<many-to-one ref="com.axelor.gst.db.Party" name="party" title="Party" required="true" />
 			<many-to-one ref="com.axelor.gst.db.Contact" name="partyContact" title="Party Contact"/>
-			<many-to-one ref="com.axelor.gst.db.Address" name="invoiceAddress" title="Invoice Address" required="true"/>
+			<many-to-one ref="com.axelor.gst.db.Address" name="invoiceAddress" title="Invoice Address" />
 			<many-to-one ref="com.axelor.gst.db.Address" name="shippingAddress" title="Shipping Address"/>
+			
 			<decimal name="netAmount" title="Net Amount" readonly="true"/>
 			<decimal name="netIGST" title="Net IGST" readonly="true"/>
 			<decimal name="netCSGT" title="Net CSGT" readonly="true"/>

@@ -4,21 +4,23 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
  
  	<grid model="com.axelor.gst.db.Invoice" title="Invoices" name="invoice-grid">
+ 			
  			<field name="company"/>
- 			<field name="date" widget="date-time"/>
+ 			<field name="dateTime"/>
 	 		<field name="party"/>
 	 		<field name="partyContact"/>
 	 		<field name="netAmount"/>
 	 		<field name="grossAmount"/>
  		
  	</grid>
- 	<form model="com.axelor.gst.db.Invoice" title="Invoice" name="invoice-form">
+ 	<form model="com.axelor.gst.db.Invoice" title="Invoice" name="invoice-form" onNew="action-invoice-record-onnew" >
  		<panel>
+ 			<field name="status" colSpan="8" widget="NavSelect"/>
  			<field name="company"/>
- 			<field name="date" widget="date-time"/>
+ 			<field name="dateTime"/>
  			<field name="reference"/>
-	 		<field name="party"/>
-	 		<field name="partyContact"/>
+	 		<field name="party" onChange="action-invoice-record-onChange"/>
+	 		<field name="partyContact" />
 	 		<field name="invoiceAddress"/>
 	 		<field name="shippingAddress"/>
 	 		<field name="netAmount"/>
@@ -28,5 +30,14 @@
 	 		<field name="invoiceItemsList"/>
  		</panel>
  	</form>
+ 	<action-record name="action-invoice-record-onnew" model="com.axelor.gst.db.Company">
+ 		
+ 		<field name="dateTime" expr="eval: __datetime__"/>
+ 		
+ 		
+ 	</action-record>
+ 	<action-record name="action-invoice-record-onChange" model="com.axelor.gst.db.Party">
+ 		<field name="partyContact" expr="eval: "/>
+ 	</action-record>
  
 </object-views>

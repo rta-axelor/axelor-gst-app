@@ -9,7 +9,7 @@
   
 	<string name="reference" title="Reference" readonly="true"/>
   	<string name="name" title="Name" required="true"/>
-  	<string name="typeSelect" title="Type" required="true" selection="gst.party.type.select"/>
+  	<string name="typeSelect" title="Type" selection="gst.party.type.select"/>
   	<boolean name="customer" title="Customer"/>
   	<boolean name="supplier" title="Supplier"/>
   	<string name="gstin" title="GSTIN" min="15" max="15"/>

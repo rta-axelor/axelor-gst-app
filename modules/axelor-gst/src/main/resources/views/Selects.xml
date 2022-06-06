@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
 	<selection name="gst.bankaccount.type.select">
-		<option value="saving">Saving</option>
+		<option value="saving" >Saving</option>
 		<option value="current">Current</option>
 	</selection>
 	

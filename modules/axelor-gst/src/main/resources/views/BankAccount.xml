@@ -11,15 +11,20 @@
  		<field name="address"/>
  	</grid>
  	
- 	<form model="com.axelor.gst.db.BankAccount" title="BankAccount" name="bankAccount-form">
+ 	<form model="com.axelor.gst.db.BankAccount" title="BankAccount" name="bankAccount-form" onNew="action-bankAccount-record-onnew">
  		<panel>
 	 		<field name="bank"/>
 	 		<field name="accountNo"/>
 	 		<field name="ifsc"/>
-	 		<field name="typeSelect"/>
+	 		<field name="typeSelect" />
 	 		<field name="address"/>
 	 	</panel>
  	</form>
+ 	<action-record name="action-bankAccount-record-onnew" model="com.axelor.gst.db.BankAccount">
+ 		<field name="typeSelect" expr="current"/>
+ 		
+ 	</action-record>
+ 	
   
  </object-views>
  

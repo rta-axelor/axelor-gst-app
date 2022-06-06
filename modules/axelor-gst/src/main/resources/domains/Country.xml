@@ -4,6 +4,7 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
 
 	<module package="com.axelor.gst.db" name="gst"/>
+		
 		<entity name="Country">
 		
 			<string name="name" title="Name" required="true"/>
