@@ -6,7 +6,6 @@
 	<grid name="company-grid" title="Companies" model="com.axelor.gst.db.Company"> 
 	  
 	  <field name="name" /> 
-	  <field name="contactList"/>
 	  <field name="gstin"/>
 	  <field name="bankaccount"/>
 	  <field name="address"/>
@@ -19,7 +18,26 @@
 		
 			<field name="name"/>
 			<field name="logo" widget="image"/>
-			<field name="contactList"/>
+			<field name="contactList">
+				<viewer> <![CDATA[
+					<contact>
+						{{record.name}} <br> 
+						{{record.typeSelect}} <br>
+						{{record.primaryEmail}} <br> 
+						{{record.secondaryEmail}} <br>
+						{{record.primaryPhone}} <br>
+						{{record.secondaryPhone}}
+					</contact>
+				]]></viewer>
+				<editor x-show-titles="false">
+					<field name="name"/>
+					<field name="typeSelect"/>
+					<field name="primaryEmail"/>
+					<field name="secondaryEmail"/>
+					<field name="primaryPhone"/>
+					<field name="secondaryPhone"/>
+				</editor>
+			</field>
 			<field name="gstin"/>
 			<field name="bankaccount"/>
 	 		<field name="address"/>

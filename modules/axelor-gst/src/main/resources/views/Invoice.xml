@@ -3,6 +3,35 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
  
+ 
+ 	<kanban columnBy="statusSelect" model="com.axelor.gst.db.Invoice" sequenceBy="priority" title="Invoice" name="invoice-kanban">
+ 		
+ 			<field name="dateTime"/>
+	 		<field name="party"/>
+	 		<field name="partyContact"/>
+	 		<field name="netAmount"/>
+	 		<field name="grossAmount"/>
+	 		<template>
+	 			<![CDATA[
+	 				<div>
+	 					<h4>Date & Time:</h4>
+	 					<h5>{{record.dateTime}}</h5><br/>
+	 				
+	 					<h4>Party:</h4>
+	 					<h5>{{record.party}}</h5><br/>
+	 				
+	 					<h4>Party Contact:</h4>
+	 					<h5>{{record.partyContact}}</h5><br/>
+	 				
+	 					<h4>Net Amount:</h4>
+	 					<h5>{{record.netAmount}}</h5><br/>
+	 				
+	 					<h4>Gross Amount:</h4>
+	 					<h5>{{record.grossAmount}}</h5><br/>
+	 				</div>
+	 			]]>
+	 		</template>
+ 	</kanban>
  	<grid model="com.axelor.gst.db.Invoice" title="Invoices" name="invoice-grid">
  			
  			<field name="company"/>
@@ -15,7 +44,7 @@
  	</grid>
  	<form model="com.axelor.gst.db.Invoice" title="Invoice" name="invoice-form" onNew="action-invoice-record-onnew" >
  		<panel>
- 			<field name="status" colSpan="8" widget="NavSelect"/>
+ 			<field name="statusSelect" showTitle="false" widget="NavSelect" colSpan="12"/>
  			<field name="company"/>
  			<field name="dateTime"/>
  			<field name="reference"/>
@@ -35,9 +64,11 @@
  		<field name="dateTime" expr="eval: __datetime__"/>
  		
  		
+ 		
  	</action-record>
  	<action-record name="action-invoice-record-onChange" model="com.axelor.gst.db.Party">
- 		<field name="partyContact" expr="eval: "/>
+ 		<field name="partyContact" expr="eval: party?.contact?.stream()?.filter(c -> c.getType().equals('primary'))
+                        .findFirst().orElse(null) "/>
  	</action-record>
  
 </object-views>

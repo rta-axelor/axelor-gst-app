@@ -4,14 +4,9 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
 
 	<module package="com.axelor.gst.db" name="gst"/>
-	<enum name="STATUS">
-		<item name="DRAFT" value="draft"/>
-		<item name="VALIDATED" value="validated"/>
-		<item name="PAID" value="paid"/>
-		<item name="CANCELLED" value="cancelled"/>
-	</enum>
+
 		<entity name="Invoice">
-			<enum name="status" ref="STATUS"/>
+			<string name="statusSelect" title="Status" selection="gst.invoice.status.select"/>
 			<many-to-one ref="com.axelor.gst.db.Company" name="company" title="Company" required="true"/>
 			<string name="reference" title="Reference" readonly="true"/>
 			<datetime name="dateTime" title="Date Time"/>

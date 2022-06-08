@@ -18,12 +18,42 @@
   			<field name="name"/>
   		<field name="code"/>
   		<field name="hsbn"/>
-  		<field name="category"/>
+  		<field name="category" onChange="action-product-record-onchange"/>
   		<field name="salePrice"/>
   		<field name="costPrice"/>
   		<field name="image"/>
   		<field name="gstRate"/>
   		</panel>
   	</form>
+  	<cards name="product-cards" model="com.axelor.gst.db.Product" title="Products">
+  		<field name="name"/>
+  		<field name="code"/>
+  		<field name="hsbn"/>
+  		<field name="category"/>
+  		<field name="salePrice"/>
+  		<field name="costPrice"/>
+  		<field name="gstRate"/>
+  		<field name="image"/>
+  		<template>
+  			<![CDATA[
+  				<div class="span4 card-image">
+  					<img ng-src="{{$image(null, 'image')}}">
+  				</div>
+  				<div class="span4">
+					<strong>{{name}}</strong><br/>
+					<strong>{{code}}</strong><br/>
+					<strong>{{hsbn}}</strong><br/>
+					<strong>{{category.name}}</strong><br/>
+					<strong>{{salePrice}}</strong><br/>
+					<strong>{{costPrice}}</strong><br/>
+					<strong>{{gstRate}}</strong>
+					
+				</div>
+  			]]>
+  		</template>
+  	</cards>
+  	<action-record name="action-product-record-onchange" model="com.axelor.gst.db.ProductCategory">
+  		<field name="category" expr="eval: "/>
+  	</action-record>
   
 </object-views>

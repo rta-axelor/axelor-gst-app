@@ -8,7 +8,7 @@
 	<menuitem title="Party" name="gst-root-party" parent="gst-root"/>
 	<menuitem title="Party" name="gst-root-party-party" parent="gst-root-party" action="action.gst.root.party.party"/>
 	<action-view name="action.gst.root.party.party" title="Parties" model="com.axelor.gst.db.Party">
-	
+		<view type="cards" name="party-cards"/>
 		<view type="grid" name="party-grid"/>
 		<view type="form" name="party-form"/>
 		
@@ -57,6 +57,7 @@
 	<menuitem title="Product" name="gst-root-product-product" parent="gst-root-product" action="action.gst.root.product.product"/>
 	
 	<action-view name="action.gst.root.product.product" title="Products" model="com.axelor.gst.db.Product">
+			<view type="cards" name="product-cards"/>
 			<view type="grid" name="product-grid"/>
 			<view type="form" name="product-form"/>
 	</action-view>
@@ -108,8 +109,10 @@
 	<menuitem title="All Invoice" name="gst-root-invoice-allInvoice" parent="gst-root-invoice" action="action.gst.root.invoice.allInvoice"/>
 	
 	<action-view name="action.gst.root.invoice.allInvoice" title="All Invoices" model="com.axelor.gst.db.Invoice">
+		
 		<view type="grid" name="invoice-grid"/>
 		<view type="form" name="invoice-form"/>
+		<view type="kanban" name="invoice-kanban"/>
 	</action-view>
 	
 	<menuitem title="Company" name="gst-root-company" parent="gst-root"/>

@@ -13,6 +13,7 @@
 	</grid>
  	<form model="com.axelor.gst.db.Address" title="Address" name="address-form">
  		<panel>
+ 		<field name="typeSelect"/>
  		<field name="line1"/>
 		<field name="line2"/>
 		<field name="city"/>
