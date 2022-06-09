@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
-	<grid model="com.axelor.gst.db.InvoiceLine" title="Invoice Lines" name="invoiceLine-grid">
+	<grid model="com.axelor.gst.db.InvoiceLine" title="Invoice Lines" name="invoiceLine-grid" >
 		<field name="product"/>
 		<field name="hsbn"/>
 		<field name="item"/>
@@ -14,12 +14,12 @@
 		
 	</grid>
 	<form model="com.axelor.gst.db.InvoiceLine" title="Invoice Line" name="invoiceLine-form">
-		<panel>
-			<field name="product"/>
+		<panel >
+			<field name="product" onChange="action-invoiceline-record-onchange"/>
 			<field name="hsbn"/>
 			<field name="item"/>
-			<field name="qty"/>
-			<field name="price"/>
+			<field name="qty" onChange="action-invoiceline-method-calculate-netamount"/>
+			<field name="price" onChange="action-invoiceline-method-calculate-netamount"/>
 			<field name="netAmount"/>
 			<field name="gstRate"/>
 			<field name="igst"/>
@@ -28,5 +28,12 @@
 			<field name="grossAmount"/>
 		</panel>
 	</form>
+	<action-method name="action-invoiceline-method-calculate-netamount">
+		<call class="com.axelor.gst.web.InvoiceLineController" method="calculateNetAmountMethod"/>
+	</action-method>
+	<action-record name="action-invoiceline-record-onchange" model="com.axelor.gst.db.Product">
+		<field name="gstRate" expr="eval: product.gstRate"/>
+	</action-record>
+	
   
 </object-views>

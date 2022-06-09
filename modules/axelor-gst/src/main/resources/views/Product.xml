@@ -53,7 +53,7 @@
   		</template>
   	</cards>
   	<action-record name="action-product-record-onchange" model="com.axelor.gst.db.ProductCategory">
-  		<field name="category" expr="eval: "/>
+  		<field name="gstRate" expr="eval: category.gstRate "/>
   	</action-record>
   
 </object-views>

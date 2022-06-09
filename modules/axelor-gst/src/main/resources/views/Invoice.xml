@@ -4,8 +4,8 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
  
  
- 	<kanban columnBy="statusSelect" model="com.axelor.gst.db.Invoice" sequenceBy="priority" title="Invoice" name="invoice-kanban">
- 		
+ 	<kanban columnBy="statusSelect" model="com.axelor.gst.db.Invoice" sequenceBy="priority" title="Invoice" name="invoice-kanban" onNew="action-invoice-record-kanban-on-new">
+ 			<field name="company"/>
  			<field name="dateTime"/>
 	 		<field name="party"/>
 	 		<field name="partyContact"/>
@@ -27,7 +27,8 @@
 	 					<h5>{{record.netAmount}}</h5><br/>
 	 				
 	 					<h4>Gross Amount:</h4>
-	 					<h5>{{record.grossAmount}}</h5><br/>
+	 					<h5>{{record.grossAmount}}</h5><br/> 
+	 		
 	 				</div>
 	 			]]>
 	 		</template>
@@ -43,6 +44,9 @@
  		
  	</grid>
  	<form model="com.axelor.gst.db.Invoice" title="Invoice" name="invoice-form" onNew="action-invoice-record-onnew" >
+ 	<toolbar>
+ 		<button onClick="clickMe" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
+ 	</toolbar>
  		<panel>
  			<field name="statusSelect" showTitle="false" widget="NavSelect" colSpan="12"/>
  			<field name="company"/>
@@ -56,19 +60,20 @@
 	 		<field name="netIGST"/>
 	 		<field name="netCSGT"/>
 	 		<field name="grossAmount"/>
-	 		<field name="invoiceItemsList"/>
+	 		<field name="invoiceItemsList" colSpan="12"/>
  		</panel>
  	</form>
  	<action-record name="action-invoice-record-onnew" model="com.axelor.gst.db.Company">
  		
  		<field name="dateTime" expr="eval: __datetime__"/>
  		
- 		
- 		
+ 	</action-record>
+ 	<action-record name="action-invoice-record-kanban-on-new" model="com.axelor.gst.db.Invoice">
+ 		<field name="company" expr="eval: _value"/>
  	</action-record>
  	<action-record name="action-invoice-record-onChange" model="com.axelor.gst.db.Party">
- 		<field name="partyContact" expr="eval: party?.contact?.stream()?.filter(c -> c.getType().equals('primary'))
-                        .findFirst().orElse(null) "/>
+ 		<field name="partyContact" expr=""/>
  	</action-record>
+ 	
  
 </object-views>
