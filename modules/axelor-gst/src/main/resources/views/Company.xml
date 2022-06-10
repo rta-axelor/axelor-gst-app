@@ -7,7 +7,7 @@
 	  
 	  <field name="name" /> 
 	  <field name="gstin"/>
-	  <field name="bankaccount"/>
+	  <field name="bankAccountList"/>
 	  <field name="address"/>
 	  
 	</grid>
@@ -39,7 +39,7 @@
 				</editor>
 			</field>
 			<field name="gstin"/>
-			<field name="bankaccount"/>
+			<field name="bankAccountList"/>
 	 		<field name="address"/>
 			
 		</panel>

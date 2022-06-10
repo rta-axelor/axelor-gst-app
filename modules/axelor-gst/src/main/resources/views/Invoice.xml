@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
- 
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd"> 
  
  	<kanban columnBy="statusSelect" model="com.axelor.gst.db.Invoice" sequenceBy="priority" title="Invoice" name="invoice-kanban" onNew="action-invoice-record-kanban-on-new">
  			<field name="company"/>
@@ -33,47 +32,51 @@
 	 			]]>
 	 		</template>
  	</kanban>
- 	<grid model="com.axelor.gst.db.Invoice" title="Invoices" name="invoice-grid">
- 			
+
+ 	<grid model="com.axelor.gst.db.Invoice" title="Invoices" name="invoice-grid"> 			
  			<field name="company"/>
  			<field name="dateTime"/>
 	 		<field name="party"/>
 	 		<field name="partyContact"/>
 	 		<field name="netAmount"/>
 	 		<field name="grossAmount"/>
- 		
  	</grid>
+
  	<form model="com.axelor.gst.db.Invoice" title="Invoice" name="invoice-form" onNew="action-invoice-record-onnew" >
- 	<toolbar>
- 		<button onClick="clickMe" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
- 	</toolbar>
+	 	<toolbar>
+	 		<button onClick="clickMe" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
+	 	</toolbar>
  		<panel>
- 			<field name="statusSelect" showTitle="false" widget="NavSelect" colSpan="12"/>
+ 			<field name="statusSelect" showTitle="false" widget="NavSelect" colSpan="12" />
  			<field name="company"/>
  			<field name="dateTime"/>
- 			<field name="reference"/>
-	 		<field name="party" onChange="action-invoice-record-onChange"/>
-	 		<field name="partyContact" />
+ 			<field name="priority"/>
+	 		<field name="party" onChange="action-invoice-record-on-change"/>
+	 		<field name="partyContact"/>
 	 		<field name="invoiceAddress"/>
 	 		<field name="shippingAddress"/>
-	 		<field name="netAmount"/>
+	 		<field name="netAmount" onChange="action-invoice-record-onChange"/>
 	 		<field name="netIGST"/>
 	 		<field name="netCSGT"/>
+	 		<field name="netSGST"/>
 	 		<field name="grossAmount"/>
-	 		<field name="invoiceItemsList" colSpan="12"/>
+	 		<field name="invoiceItemsList" colSpan="12" onChange="action-invoice-record-onChange"/>
  		</panel>
  	</form>
+ 	
  	<action-record name="action-invoice-record-onnew" model="com.axelor.gst.db.Company">
- 		
  		<field name="dateTime" expr="eval: __datetime__"/>
- 		
  	</action-record>
+ 	
  	<action-record name="action-invoice-record-kanban-on-new" model="com.axelor.gst.db.Invoice">
  		<field name="company" expr="eval: _value"/>
  	</action-record>
- 	<action-record name="action-invoice-record-onChange" model="com.axelor.gst.db.Party">
- 		<field name="partyContact" expr=""/>
+ 	
+ 	<action-record name="action-invoice-record-onChange" model="com.axelor.gst.db.InvoiceLine">
+ 		<field name="netAmount" expr="eval: invoiceItemsList.netAmount"/>
  	</action-record>
  	
- 
+ 	<action-record name="action-invoice-record-on-change" model="com.axelor.gst.db.Invoice">
+ 		<field name="partyContact" expr="eval: party?.contactList?.find{it-> it.getTypeSelect().equals('primary')}"/>
+ 	</action-record>
 </object-views>

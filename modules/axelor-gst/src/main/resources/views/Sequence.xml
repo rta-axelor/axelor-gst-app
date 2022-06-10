@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
-  	<grid model="com.axelor.gst.db.Sequence" title="Sequences" name="sequence-grid">
+  	<grid model="com.axelor.gst.db.Sequence" title="Sequences" name="sequence-grid" >
   		<field name="prefix"/>
   		<field name="suffix"/>
   		<field name="padding"/>
@@ -12,9 +12,9 @@
   	
   	<form model="com.axelor.gst.db.Sequence" title="Sequence" name="sequence-form">
   		<panel>
-  			<field name="prefix"/>
+  			<field name="prefix" required="true"/>
 	  		<field name="suffix"/>
-	  		<field name="padding"/>
+	  		<field name="padding" min="1" max="10"/>
 	  		<field name="nextNumber"/>
   		</panel>
   	</form>

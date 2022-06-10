@@ -16,8 +16,17 @@ public class InvoiceLineController {
 		
 		
 		Beans.get(InvoiceLineService.class).calculateNetAmount(invoiceline);
+		Beans.get(InvoiceLineService.class).calculateIgst(invoiceline);
+		Beans.get(InvoiceLineService.class).calculateSgst(invoiceline);
+		Beans.get(InvoiceLineService.class).calculateCgst(invoiceline);
+		Beans.get(InvoiceLineService.class).calculateGrossAmount(invoiceline);
 		
 		response.setValue("netAmount", invoiceline.getNetAmount());
+		response.setValue("igst", invoiceline.getIgst());
+		response.setValue("sgst", invoiceline.getSgst());
+		response.setValue("cgst", invoiceline.getCgst());
+		response.setValue("gross", invoiceline.getGrossAmount());
+		
 	}
 
 }

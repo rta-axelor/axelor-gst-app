@@ -9,7 +9,7 @@
 		<field name="name"/>
 		<field name="customer"/>
 		<field name="supplier"/>
-		<field name="partyGstin"/>
+		<field name="gstin"/>
 		
 	</grid>
 	
@@ -21,7 +21,7 @@
 			<field name="typeSelect"/>
 			<field name="customer"/>
 			<field name="supplier"/>
-			<field name="partyGstin"/>
+			<field name="gstin"/>
 			<field name="contactList">
 				<viewer> <![CDATA[
 					<contact>
@@ -71,14 +71,14 @@
 		<field name="name"/>
 		<field name="customer"/>
 		<field name="supplier"/>
-		<field name="partyGstin"/>
+		<field name="gstin"/>
 		<template>
 			<![CDATA[
 				<div class="span4 card-image">
 					<strong>{{name}}</strong>
 					<strong>{{customer}}</strong>
 					<strong>{{supplier}}</strong>
-					<strong>{{partyGstin}}</strong>
+					<strong>{{gstin}}</strong>
 				</div>
 			]]>
 		</template>

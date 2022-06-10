@@ -8,7 +8,8 @@
 			<string name="name" title="Name" required="true"/>
 			<string name="code" title="Code" required="true"/>
 			<string name="hsbn" title="HSBN"/>
-			<many-to-one ref="com.axelor.gst.db.ProductCategory" name="category" title="Category"/>
+			<many-to-one ref="com.axelor.gst.db.ProductCategory" 
+				name="category" title="Category"/>
 			<decimal name="salePrice" title="Sale price"/>
 			<decimal name="costPrice" title="Cost price"/>
 			<binary name="image" title="Image"/>
