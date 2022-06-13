@@ -53,8 +53,9 @@
  			<field name="priority"/>
 	 		<field name="party" onChange="action-invoice-record-on-change"/>
 	 		<field name="partyContact"/>
-	 		<field name="invoiceAddress"/>
+	 		<field name="invoiceAddress" />
 	 		<field name="shippingAddress"/>
+	 		<field name="sameAsInvoicingAddress" />
 	 		<field name="netAmount" onChange="action-invoice-record-onChange"/>
 	 		<field name="netIGST"/>
 	 		<field name="netCSGT"/>
@@ -78,5 +79,7 @@
  	
  	<action-record name="action-invoice-record-on-change" model="com.axelor.gst.db.Invoice">
  		<field name="partyContact" expr="eval: party?.contactList?.find{it-> it.getTypeSelect().equals('primary')}"/>
+ 		<field name="invoiceAddress" expr="eval: party?.addressList?.find{it-> it.getTypeSelect().equals('default') || it.getTypeSelect().equals('invoice')}"/>
+ 		
  	</action-record>
 </object-views>

@@ -17,7 +17,7 @@ public class InvoiceLineServiceImpl implements InvoiceLineService{
 
 	@Override
 	public InvoiceLine calculateIgst(InvoiceLine invoiceline) {
-		BigDecimal igst = invoiceline.getNetAmount().multiply(invoiceline.getGstRate());
+		BigDecimal igst = invoiceline.getNetAmount().multiply(invoiceline.getGstRate()).divide(new BigDecimal(100));
 		invoiceline.setIgst(igst);
 		return invoiceline;
 	}

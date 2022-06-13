@@ -1,5 +1,6 @@
 package com.axelor.gst.web;
 
+import com.axelor.gst.db.Invoice;
 import com.axelor.gst.db.InvoiceLine;
 import com.axelor.gst.service.InvoiceLineService;
 import com.axelor.inject.Beans;
@@ -13,18 +14,31 @@ public class InvoiceLineController {
 		Context context = request.getContext();
 		
 		InvoiceLine invoiceline = context.asType(InvoiceLine.class);
+		Invoice invoice = request.getContext().getParentContext().asType(Invoice.class);
+		if(invoice.getCompany().getAddress().getState() != null) {
+			if(invoice.getCompany().getAddress().getState() != invoice.getInvoiceAddress().getState()) {
+				Beans.get(InvoiceLineService.class).calculateIgst(invoiceline);
+				response.setValue("igst", invoiceline.getIgst());
+			}else {
+				Beans.get(InvoiceLineService.class).calculateSgst(invoiceline);
+				response.setValue("sgst", invoiceline.getSgst());
 		
+				Beans.get(InvoiceLineService.class).calculateCgst(invoiceline);
+				response.setValue("cgst", invoiceline.getCgst());
+				}
+		}
+		
+	
 		
 		Beans.get(InvoiceLineService.class).calculateNetAmount(invoiceline);
-		Beans.get(InvoiceLineService.class).calculateIgst(invoiceline);
-		Beans.get(InvoiceLineService.class).calculateSgst(invoiceline);
-		Beans.get(InvoiceLineService.class).calculateCgst(invoiceline);
+		
+		
 		Beans.get(InvoiceLineService.class).calculateGrossAmount(invoiceline);
 		
 		response.setValue("netAmount", invoiceline.getNetAmount());
-		response.setValue("igst", invoiceline.getIgst());
-		response.setValue("sgst", invoiceline.getSgst());
-		response.setValue("cgst", invoiceline.getCgst());
+		
+		
+		
 		response.setValue("gross", invoiceline.getGrossAmount());
 		
 	}
