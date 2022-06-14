@@ -6,13 +6,14 @@
 	<grid model="com.axelor.gst.db.Contact" title="Contacts" name="contact-grid">
 		
 		<field name="name"/>
+		<field name="typeSelect"/>
 		<field name="primaryEmail"/>
 		<field name="secondaryEmail"/>
 		<field name="primaryPhone"/>
 		<field name="secondaryPhone"/>
 		
 	</grid>
-	<form model="com.axelor.gst.db.Contact" title="Contact" name="contact-form">
+	<form model="com.axelor.gst.db.Contact" title="Contact" name="contact-form" width="large">
 		<panel>
 			
 			<field name="name"/>

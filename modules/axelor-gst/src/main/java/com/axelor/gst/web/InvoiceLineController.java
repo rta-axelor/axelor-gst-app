@@ -15,11 +15,12 @@ public class InvoiceLineController {
 		
 		InvoiceLine invoiceline = context.asType(InvoiceLine.class);
 		Invoice invoice = request.getContext().getParentContext().asType(Invoice.class);
-		if(invoice.getCompany().getAddress().getState() != null) {
+		
+		if(invoice.getCompany() != null && invoice.getCompany().getAddress() != null && invoice.getCompany().getAddress().getState() != null) {
 			if(invoice.getCompany().getAddress().getState() != invoice.getInvoiceAddress().getState()) {
 				Beans.get(InvoiceLineService.class).calculateIgst(invoiceline);
 				response.setValue("igst", invoiceline.getIgst());
-			}else {
+			}else{
 				Beans.get(InvoiceLineService.class).calculateSgst(invoiceline);
 				response.setValue("sgst", invoiceline.getSgst());
 		
@@ -27,19 +28,13 @@ public class InvoiceLineController {
 				response.setValue("cgst", invoiceline.getCgst());
 				}
 		}
-		
 	
-		
 		Beans.get(InvoiceLineService.class).calculateNetAmount(invoiceline);
-		
-		
-		Beans.get(InvoiceLineService.class).calculateGrossAmount(invoiceline);
-		
 		response.setValue("netAmount", invoiceline.getNetAmount());
+
 		
-		
-		
-		response.setValue("gross", invoiceline.getGrossAmount());
+		Beans.get(InvoiceLineService.class).calculateGrossAmount(invoiceline);	
+		response.setValue("grossAmount", invoiceline.getGrossAmount());
 		
 	}
 

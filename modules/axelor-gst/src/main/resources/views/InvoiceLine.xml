@@ -5,8 +5,6 @@
 
 	<grid model="com.axelor.gst.db.InvoiceLine" title="Invoice Lines" name="invoiceLine-grid" >
 		<field name="product"/>
-		<field name="hsbn"/>
-		<field name="item"/>
 		<field name="qty"/>
 		<field name="price"/>
 		<field name="netAmount"/>
@@ -35,6 +33,7 @@
 		<field name="hsbn" expr="eval: product.hsbn"/>
 		<field name="item" expr="eval: product.name"/>
 		<field name="gstRate" expr="eval: product.gstRate"/>
+		<field name="price" expr="eval: product.salePrice"/>
 	</action-record>
 	
   

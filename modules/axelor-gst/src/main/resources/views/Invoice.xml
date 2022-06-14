@@ -35,14 +35,12 @@
 
  	<grid model="com.axelor.gst.db.Invoice" title="Invoices" name="invoice-grid"> 			
  			<field name="company"/>
- 			<field name="dateTime"/>
 	 		<field name="party"/>
-	 		<field name="partyContact"/>
 	 		<field name="netAmount"/>
 	 		<field name="grossAmount"/>
  	</grid>
 
- 	<form model="com.axelor.gst.db.Invoice" title="Invoice" name="invoice-form" onNew="action-invoice-record-onnew" >
+ 	<form model="com.axelor.gst.db.Invoice" title="Invoice" name="invoice-form" onNew="action-invoice-record-onnew" width="large" >
 	 	<toolbar>
 	 		<button onClick="clickMe" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
 	 	</toolbar>
@@ -56,12 +54,12 @@
 	 		<field name="invoiceAddress" />
 	 		<field name="shippingAddress"/>
 	 		<field name="sameAsInvoicingAddress" />
-	 		<field name="netAmount" onChange="action-invoice-record-onChange"/>
+	 		<field name="netAmount" />
 	 		<field name="netIGST"/>
 	 		<field name="netCSGT"/>
 	 		<field name="netSGST"/>
 	 		<field name="grossAmount"/>
-	 		<field name="invoiceItemsList" colSpan="12" onChange="action-invoice-record-onChange"/>
+	 		<field name="invoiceItemsList" colSpan="12" onChange="action-invoice-method-on-change" />
  		</panel>
  	</form>
  	
@@ -73,13 +71,12 @@
  		<field name="company" expr="eval: _value"/>
  	</action-record>
  	
- 	<action-record name="action-invoice-record-onChange" model="com.axelor.gst.db.InvoiceLine">
- 		<field name="netAmount" expr="eval: invoiceItemsList.netAmount"/>
- 	</action-record>
- 	
+<!--  <action-method name="action-invoice-method-on-change">
+ 	<call class="" method=""/>
+ </action-method>	 -->
  	<action-record name="action-invoice-record-on-change" model="com.axelor.gst.db.Invoice">
  		<field name="partyContact" expr="eval: party?.contactList?.find{it-> it.getTypeSelect().equals('primary')}"/>
  		<field name="invoiceAddress" expr="eval: party?.addressList?.find{it-> it.getTypeSelect().equals('default') || it.getTypeSelect().equals('invoice')}"/>
- 		
  	</action-record>
+ 	
 </object-views>

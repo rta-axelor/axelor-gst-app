@@ -39,7 +39,13 @@ public class InvoiceLineServiceImpl implements InvoiceLineService{
 
 	@Override
 	public InvoiceLine calculateGrossAmount(InvoiceLine invoiceline) {
-		BigDecimal gross = invoiceline.getNetAmount().add(invoiceline.getIgst()).add(invoiceline.getCgst());
+		
+		System.err.println(invoiceline.getNetAmount());
+		System.err.println(invoiceline.getIgst());
+		System.err.println(invoiceline.getCgst());
+		System.err.println(invoiceline.getSgst());
+		
+		BigDecimal gross = invoiceline.getNetAmount().add(invoiceline.getIgst()).add(invoiceline.getSgst()).add(invoiceline.getCgst());
 		invoiceline.setGrossAmount(gross);
 		return invoiceline;	
 	

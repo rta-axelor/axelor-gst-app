@@ -7,42 +7,36 @@
 	  
 	  <field name="name" /> 
 	  <field name="gstin"/>
-	  <field name="bankAccountList"/>
 	  <field name="address"/>
 	  
 	</grid>
 	
-	<form name="company-form" title="Company" model="com.axelor.gst.db.Company">
+	<form name="company-form" title="Company" model="com.axelor.gst.db.Company" width="large">
 	
-		<panel name="mainPanel" title="Main Panel">
-		
+		<panel>
+			<field name="logo" widget="image" colSpan="12"/>
 			<field name="name"/>
-			<field name="logo" widget="image"/>
-			<field name="contactList">
-				<viewer> <![CDATA[
-					<contact>
-						{{record.name}} <br> 
-						{{record.typeSelect}} <br>
-						{{record.primaryEmail}} <br> 
-						{{record.secondaryEmail}} <br>
-						{{record.primaryPhone}} <br>
-						{{record.secondaryPhone}}
-					</contact>
-				]]></viewer>
-				<editor x-show-titles="false">
-					<field name="name"/>
-					<field name="typeSelect"/>
-					<field name="primaryEmail"/>
-					<field name="secondaryEmail"/>
-					<field name="primaryPhone"/>
-					<field name="secondaryPhone"/>
-				</editor>
-			</field>
 			<field name="gstin"/>
-			<field name="bankAccountList"/>
 	 		<field name="address"/>
+	 		
 			
 		</panel>
+		<panel-tabs>
+			<panel-related field="bankAccountList" colSpan="12" form-view="bankAccount-popup-form" grid-view="bankAccount-grid"/>
+			<panel-related field="contactList" colSpan="12" form-view="contactList-popup-form" grid-view="contact-grid"/>
+			<panel title="Contacts Editor">
+				<field name="contactList" showTitle="false">
+					<editor x-viewer="true">
+						<field name="name"/>
+						<field name="typeSelect"/>
+						<field name="primaryEmail"/>
+						<field name="secondaryEmail"/>
+						<field name="primaryPhone"/>
+						<field name="secondaryPhone"/>
+					</editor>
+				</field>
+			</panel>
+		</panel-tabs>
 		
 	</form>
 	
