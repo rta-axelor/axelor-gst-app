@@ -8,7 +8,11 @@
 		<field name="qty"/>
 		<field name="price"/>
 		<field name="netAmount"/>
+		<field name="igst"/>
+		<field name="sgst"/>
+		<field name="cgst"/>
 		<field name="grossAmount"/>
+		
 		
 	</grid>
 	<form model="com.axelor.gst.db.InvoiceLine" title="Invoice Line" name="invoiceLine-form">
@@ -31,7 +35,7 @@
 	</action-method>
 	<action-record name="action-invoiceline-record-onchange" model="com.axelor.gst.db.InvoiceLine">
 		<field name="hsbn" expr="eval: product.hsbn"/>
-		<field name="item" expr="eval: product.name"/>
+		<field name="item" expr="eval: product.code"/>
 		<field name="gstRate" expr="eval: product.gstRate"/>
 		<field name="price" expr="eval: product.salePrice"/>
 	</action-record>

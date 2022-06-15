@@ -56,7 +56,7 @@
 	 		<field name="sameAsInvoicingAddress" />
 	 		<field name="netAmount" />
 	 		<field name="netIGST"/>
-	 		<field name="netCSGT"/>
+	 		<field name="netCGST"/>
 	 		<field name="netSGST"/>
 	 		<field name="grossAmount"/>
 	 		<field name="invoiceItemsList" colSpan="12" onChange="action-invoice-method-on-change" />
@@ -71,9 +71,9 @@
  		<field name="company" expr="eval: _value"/>
  	</action-record>
  	
-<!--  <action-method name="action-invoice-method-on-change">
- 	<call class="" method=""/>
- </action-method>	 -->
+ <action-method name="action-invoice-method-on-change">
+ 	<call class="com.axelor.gst.web.InvoiceController" method="calculateInvoiceMethod"/>
+ </action-method>	
  	<action-record name="action-invoice-record-on-change" model="com.axelor.gst.db.Invoice">
  		<field name="partyContact" expr="eval: party?.contactList?.find{it-> it.getTypeSelect().equals('primary')}"/>
  		<field name="invoiceAddress" expr="eval: party?.addressList?.find{it-> it.getTypeSelect().equals('default') || it.getTypeSelect().equals('invoice')}"/>
