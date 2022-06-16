@@ -5,10 +5,12 @@
 
   	<module package="com.axelor.gst.db" name="gst"/>
   		<entity name="Sequence">
+  		
   			<string name="prefix" title="Prefix"/>
   			<string name="suffix" title="Suffix"/>
   			<integer name="padding" title="Padding"/>
   			<string name="nextNumber" title="Next Number"/>
+  			
   			<many-to-one ref="com.axelor.meta.db.MetaModel" name="model" title="Model"/>
   			
   		</entity> 

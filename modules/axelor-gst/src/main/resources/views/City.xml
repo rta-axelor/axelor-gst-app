@@ -8,6 +8,7 @@
 		<field name="state"/>
 		<field name="country"/>
 	</grid>
+	
 	<form model="com.axelor.gst.db.City" title="City" name="city-form">
 		<panel>
 			<field name="name"/>

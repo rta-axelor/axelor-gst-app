@@ -12,9 +12,8 @@
 		<field name="sgst"/>
 		<field name="cgst"/>
 		<field name="grossAmount"/>
-		
-		
 	</grid>
+	
 	<form model="com.axelor.gst.db.InvoiceLine" title="Invoice Line" name="invoiceLine-form">
 		<panel >
 			<field name="product" onChange="action-invoiceline-record-onchange"/>
@@ -30,9 +29,11 @@
 			<field name="grossAmount"/>
 		</panel>
 	</form>
+	
 	<action-method name="action-invoiceline-method-calculate-netamount">
 		<call class="com.axelor.gst.web.InvoiceLineController" method="calculateNetAmountMethod"/>
 	</action-method>
+	
 	<action-record name="action-invoiceline-record-onchange" model="com.axelor.gst.db.InvoiceLine">
 		<field name="hsbn" expr="eval: product.hsbn"/>
 		<field name="item" expr="eval: product.code"/>

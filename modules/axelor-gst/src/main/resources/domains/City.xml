@@ -10,7 +10,6 @@
   		<string name="state" title="State"/>
   		<string name="country" title="Country" required="true"/>
   	
-  	
   	</entity>
   
 </domain-models>

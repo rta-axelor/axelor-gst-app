@@ -4,22 +4,17 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
 	<grid name="company-grid" title="Companies" model="com.axelor.gst.db.Company"> 
-	  
 	  <field name="name" /> 
 	  <field name="gstin"/>
 	  <field name="address"/>
-	  
 	</grid>
 	
 	<form name="company-form" title="Company" model="com.axelor.gst.db.Company" width="large">
-	
 		<panel>
 			<field name="logo" widget="image" colSpan="12"/>
 			<field name="name"/>
 			<field name="gstin"/>
 	 		<field name="address"/>
-	 		
-			
 		</panel>
 		<panel-tabs>
 			<panel-related field="bankAccountList" colSpan="12" form-view="bankAccount-popup-form" grid-view="bankAccount-grid"/>
@@ -37,8 +32,6 @@
 				</field>
 			</panel>
 		</panel-tabs>
-		
 	</form>
-	
 	
 </object-views>

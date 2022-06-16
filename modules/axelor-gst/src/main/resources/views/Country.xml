@@ -6,6 +6,7 @@
  	<grid model="com.axelor.gst.db.Country" title="Countries" name="country-grid">
  		<field name="name"/>
  	</grid>
+ 	
  	<form model="com.axelor.gst.db.Country" title="Country" name="country-form">
  		<panel>
  			<field name="name"/>

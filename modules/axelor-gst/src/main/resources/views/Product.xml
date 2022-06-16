@@ -18,10 +18,9 @@
   		<field name="category"/>
   		<field name="salePrice"/>
   		<field name="gstRate"/>
-  	
   	</grid>
+  	
   	<form model="com.axelor.gst.db.Product" title="Product" name="product-form">
-  		
   		<panel>
   			<field name="name"/>
   		<field name="code"/>
@@ -33,6 +32,7 @@
   		<field name="gstRate"/>
   		</panel>
   	</form>
+  	
   	<cards name="product-cards" model="com.axelor.gst.db.Product" title="Products">
   		<field name="name"/>
   		<field name="code"/>
@@ -60,6 +60,7 @@
   			]]>
   		</template>
   	</cards>
+  	
   	<action-record name="action-product-record-onchange" model="com.axelor.gst.db.Product">
   		<field name="gstRate" expr="eval: category.gstRate "/>
   	</action-record>

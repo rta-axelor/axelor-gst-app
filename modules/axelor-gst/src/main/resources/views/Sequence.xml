@@ -19,8 +19,9 @@
 	  		<field name="model"/>
   		</panel>
   	</form>
+  	
   	<action-method name="action-sequence-method-onchange">
-  		<call class="com.axelor.gst.web.SequenceController" method="SequenceMethod"/>
+  		<call class="com.axelor.gst.web.SequenceController" method="setNextNumber"/>
   	</action-method>
   
 </object-views>

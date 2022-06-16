@@ -9,7 +9,6 @@
 	  		<string name="name" title="Name" required="true"/>
 	  		<string name="country" title="Country" required="true"/>
 	  		
-	  	
 	  </entity>
   
 </domain-models>

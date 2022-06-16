@@ -11,6 +11,7 @@
 		<field name="country"/>
 		<field name="pincode"/>
 	</grid>
+	
  	<form model="com.axelor.gst.db.Address" title="Address" name="address-form">
  		<panel>
  		<field name="typeSelect"/>

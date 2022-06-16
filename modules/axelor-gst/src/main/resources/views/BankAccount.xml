@@ -19,9 +19,9 @@
 	 		<field name="address"/>
 	 	</panel>
  	</form>
+ 	
  	<action-record name="action-bankAccount-record-onnew" model="com.axelor.gst.db.BankAccount">
  		<field name="typeSelect" expr="current"/>
- 		
  	</action-record>
  	
   

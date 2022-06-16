@@ -4,10 +4,12 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
 
 	<module package="com.axelor.gst.db" name="gst"/>
-	
 		<entity name="ProductCategory">
+		
 			<string name="name" title="Name" required="true"/>
 			<string name="code" title="Code" required="true"/>
 			<decimal name="gstRate" title="GST rate"/>
+			
 		</entity>
+		
 </domain-models>
