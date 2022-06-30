@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+	<chart name="unpaid.invoice.per.customer" title="Unpaid invoice per customer" onInit="action-invoice-record-chart-set-date">
+		<search-fields>
+			<field name="fromDate" type="date" title="From Date" />
+			<field name="toDate" type="date" title="To Date" />
+		</search-fields>
+		<dataset type="jpql">
+  			<![CDATA[
+  			SELECT
+ 				COUNT(self.id) as invoice,
+ 				p.name as party	    
+		    FROM
+		    	Invoice self
+		    LEFT JOIN Party as p ON (self.party=p.id AND p.customer=true)
+		    WHERE	
+		    	self.statusSelect!='paid'
+		    	AND self.dateTime BETWEEN :fromDate AND  :toDate
+		    GROUP BY
+		      p.name
+  			]]>
+  		</dataset>
+		<category key="party" />
+		<series key="invoice" type="bar" title="Unpaid invoices" />
+	</chart>
+
+	<chart name="paid.invoice.per.product" title="Paid invoice per category per product" onInit="action-invoice-record-chart-set-date">
+		<search-fields>
+			<field name="fromDate" type="date" title="From Date" />
+			<field name="toDate" type="date" title="To Date" />
+		</search-fields>
+		<dataset type="jpql">
+  		 <![CDATA[	  
+		    SELECT
+ 				COUNT(self.id) as invoice,
+ 				_category.name	as cat,
+ 				   pro.name	
+		    FROM
+		    	Invoice self
+		    LEFT JOIN InvoiceLine as line ON line.invoice=self.id
+		    LEFT JOIN Product as pro ON line.product=pro.id
+		    LEFT JOIN ProductCategory as _category ON pro.category=_category.id
+		    WHERE	
+		    	self.statusSelect = 'paid'
+		    	AND self.dateTime BETWEEN :fromDate AND  :toDate
+		    GROUP BY
+		    	_category.name,pro.name	  
+		    ]]>
+		    </dataset>
+		<category key="cat" />
+		<series key="invoice" type="bar" />
+	</chart>
+
+	<chart name="customer.per.state.pie" title="Customer per state">
+		<dataset type="jpql">
+		    <![CDATA[
+		  
+		    SELECT
+		        COUNT(self.id) as cust,
+		        st.name	as _state 
+		    FROM
+		        Party self
+		    LEFT JOIN Address as addr on (addr.party =self.id)
+		    LEFT JOIN State as st ON (st.id=addr.state)
+		    WHERE	    	
+		    	self.customer=true
+		    	AND (addr.typeSelect='default' OR addr.typeSelect='invoice' OR addr.typeSelect='shipping')
+		    GROUP BY
+		       st.name
+		    ]]>
+		    </dataset>
+		<category key="_state" />
+		<series key="cust" type="pie" />
+	</chart>
+
+	<chart name="invoice.per.status.amount.bar" title="Invoice per status(Invoice amount bar)">
+		<dataset type="sql">
+		    <![CDATA[
+		    SELECT
+		        SUM(self.net_amount) as amount,
+		        self.status_select AS status
+		    FROM
+		        gst_invoice self
+		    GROUP BY
+		        status_select
+		    ]]>
+		    </dataset>
+		<category key="status" />
+		<series key="amount" type="bar" />
+	</chart>
+
+	<chart name="invoice.per.status.invoice.line" title="Invoice per status (Invoice count line)">
+		<dataset type="sql">
+		    <![CDATA[
+		    SELECT
+		        COUNT(self.id) AS invoice,
+		        self.status_select AS status
+		    FROM
+		        gst_invoice self
+		    GROUP BY
+		        status_select
+		    ]]>
+		    </dataset>
+		<category key="status" />
+		<series key="invoice" type="line" />
+	</chart>
+
+
+	<dashboard name="dashboard" title="Dashboard" css="panel-blue">
+		<dashlet action="chart:unpaid.invoice.per.customer" />
+		<dashlet action="chart:paid.invoice.per.product" />
+		<dashlet action="chart:customer.per.state.pie" />
+		<dashlet action="chart:invoice.per.status.amount.bar" />
+		<dashlet action="chart:invoice.per.status.invoice.line" />
+		<dashlet action="older.invoice.grid" colSpan="12" />
+	</dashboard>
+
+	<action-view name="older.invoice.grid" title="Older Invoice" model="com.axelor.gst.db.Invoice">
+		<view type="grid" />
+		<view type="form" />
+		<domain>self.statusSelect = :statusSelect AND self.statusSelect != :_statusSelect AND (self.dateTime &lt; :currentDate)</domain>
+		<context name="_statusSelect" expr="validated" />
+		<context name="_statusSelect" expr="paid" />
+		<context name="currentDate" expr="eval:__datetime__.minusMonths(1)" />
+	</action-view>
+
+	<action-record name="action-invoice-record-chart-set-date" model="com.axelor.gst.db.Invoice">
+		<field name="fromDate" expr="eval: __date__.withDayOfMonth(1)" />
+		<field name="toDate" expr="eval:__date__" />
+	</action-record>
+
+</object-views>

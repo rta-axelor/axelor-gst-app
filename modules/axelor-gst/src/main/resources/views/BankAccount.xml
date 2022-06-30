@@ -3,27 +3,26 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
  
- 	<grid model="com.axelor.gst.db.BankAccount" title="BankAccounts" name="bankAccount-grid">
+ 	<grid model="com.axelor.gst.db.BankAccount" title="BankAccounts" name="bank-account-grid">
  		<field name="bank"/>
  		<field name="accountNo"/>
  		<field name="ifsc"/>
  		<field name="address"/>
  	</grid>
  	
- 	<form model="com.axelor.gst.db.BankAccount" title="BankAccount" name="bankAccount-form" onNew="action-bankAccount-record-onnew">
+ 	<form model="com.axelor.gst.db.BankAccount" title="BankAccount" name="bank-account-form" onNew="action-bank-account-record-onnew">
  		<panel>
 	 		<field name="bank"/>
 	 		<field name="accountNo"/>
 	 		<field name="ifsc"/>
-	 		<field name="typeSelect" />
-	 		<field name="address"/>
+	 		<field name="typeSelect"/>
+ 			<field name="address"/>
 	 	</panel>
  	</form>
  	
- 	<action-record name="action-bankAccount-record-onnew" model="com.axelor.gst.db.BankAccount">
+ 	<action-record name="action-bank-account-record-onnew" model="com.axelor.gst.db.BankAccount">
  		<field name="typeSelect" expr="current"/>
  	</action-record>
  	
   
  </object-views>
- 

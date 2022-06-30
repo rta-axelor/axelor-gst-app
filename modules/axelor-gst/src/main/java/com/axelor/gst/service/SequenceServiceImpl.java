@@ -7,7 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 import com.axelor.gst.db.Sequence;
 import com.axelor.gst.db.repo.SequenceRepository;
 import com.axelor.inject.Beans;
-
 import com.google.inject.persist.Transactional;
 
 
@@ -48,14 +47,11 @@ public class SequenceServiceImpl implements SequenceService {
                 for (int i = seq.getPrefix().length(); i < l; i++) {
                     padding += seq.getNextNumber().charAt(i);
                 }
-
             }
-
             Long nextVal = Long.parseLong(padding);
             nextVal++;
             String padnext = StringUtils.leftPad(nextVal.toString(), seq.getPadding(), "0");
             nextSequence = calculateNextSequence(seq, padnext);
-
             if (padnext.length() != seq.getPadding())
                 seq.setPadding(padnext.length());
             	seq.setNextNumber(nextSequence);
@@ -74,4 +70,6 @@ public class SequenceServiceImpl implements SequenceService {
         return nextSequence;
     }
 
+
+	
 }

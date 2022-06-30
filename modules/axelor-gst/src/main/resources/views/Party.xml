@@ -1,50 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<object-views xmlns="http://axelor.com/xml/ns/object-views"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
-
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
 	<grid model="com.axelor.gst.db.Party" title="Parties" name="party-grid">
-		<field name="name"/>
-		<field name="typeSelect"/>
-		<field name="customer"/>
-		<field name="supplier"/>
-		<field name="gstin"/>
+		<field name="reference" />
+		<field name="name" />
+		<field name="typeSelect" />
+		<field name="customer" />
+		<field name="supplier" />
+		<field name="gstin" />
 	</grid>
 	
-	<form model="com.axelor.gst.db.Party" title="Party" name="party-form" onNew="action-party-record-onnew" width="large">
+	<form model="com.axelor.gst.db.Party" title="Party" name="party-form" onNew="action-party-record-onnew" width="large"
+		onSave="com.axelor.gst.web.SequenceController:getSequence">
 		<panel>
-			<field name="name"/>
-			<field name="typeSelect"/>
-			<field name="customer"/>
-			<field name="supplier"/>
-			<field name="gstin" min="15" max="15"/>
+			<field name="reference" colSpan="12" />
+			<field name="name" />
+			<field name="typeSelect" />
+			<field name="customer" />
+			<field name="supplier" />
+			<field name="gstin" min="15" max="15" />
 		</panel>
 		<panel-tabs>
-			<panel-related field="contactList" colSpan="12" grid-view="contact-grid"/>
-			<panel-related field="addressList" colSpan="12" grid-view="address-grid"/>
+			<panel-related field="contactList" colSpan="12" grid-view="contact-grid" />
+			<panel-related field="addressList" colSpan="12" grid-view="address-grid" />
 			<panel title="Contact List Editor">
 				<field name="contactList" showTitle="false">
 					<editor x-viewer="true">
-						<field name="name"/>
-						<field name="typeSelect"/>
-						<field name="primaryEmail"/>
-						<field name="secondaryEmail"/>
-						<field name="primaryPhone"/>
-						<field name="secondaryPhone"/>
+						<field name="name" />
+						<field name="typeSelect" />
+						<field name="primaryEmail" />
+						<field name="secondaryEmail" />
+						<field name="primaryPhone" />
+						<field name="secondaryPhone" />
 					</editor>
 				</field>
 			</panel>
 			<panel title="Address List Editor ">
 				<field name="addressList" showTitle="false">
 					<editor x-viewer="true">
-							<field name="typeSelect"/>
-							<field name="line1"/>
-							<field name="line2"/>
-							<field name="city"/>
-							<field name="state"/>
-							<field name="country"/>
-							<field name="pincode"/>
+							<field name="typeSelect" />
+						<field name="line1" />
+						<field name="line2" />
+						<field name="city" />
+						<field name="state" />
+						<field name="country" />
+						<field name="pincode" />
 					</editor>
 				</field>
 			</panel>
@@ -52,17 +53,14 @@
 	</form>
 	
 	<cards name="party-cards" model="com.axelor.gst.db.Party" title="Party">
-		<field name="name"/>
-		<field name="typeSelect"/>
-		<field name="customer"/>
-		<field name="supplier"/>
-		<field name="gstin"/>
+		<field name="reference" />
+		<field name="name" />
+		<field name="gstin" />
 		<template>
 			<![CDATA[
 				<div class="span4 card-image">
+					<strong>{{reference}}</strong>
 					<strong>{{name}}</strong>
-					<strong>{{customer}}</strong>
-					<strong>{{supplier}}</strong>
 					<strong>{{gstin}}</strong>
 				</div>
 			]]>
@@ -70,7 +68,7 @@
 	</cards>
 	
 	<action-record name="action-party-record-onnew" model="com.axelor.gst.db.Party">
-		<field name="typeSelect" expr="company"/>
+		<field name="typeSelect" expr="company" />
 	</action-record>
 	
   </object-views>

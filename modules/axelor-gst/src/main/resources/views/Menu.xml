@@ -3,7 +3,16 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
+	
 	<menuitem title="GST" name="gst-root"/>
+	
+	<menuitem title="Dashboards" name="gst-root-dashboard" parent="gst-root" action="action.gst.root.dashboard" order="1"/>
+	
+	<action-view name="action.gst.root.dashboard" title="Dashboard" >
+		<view type="dashboard" name="dashboard"/>
+	</action-view>
+	
+	
 	
 	<menuitem title="Party" name="gst-root-party" parent="gst-root" order="5"/>
 	
@@ -58,8 +67,8 @@
 	
 	<menuitem title="Product Categories" name="gst-root-product-productCategories" parent="gst-root-product" action="action.gst.root.product.productCategories"/>
 	<action-view name="action.gst.root.product.productCategories" title="Product Categories" model="com.axelor.gst.db.ProductCategory">
-			<view type="grid" name="productCategory-grid"/>
-			<view type="form" name="productCategory-form"/>
+			<view type="grid" name="product-category-grid"/>
+			<view type="form" name="product-category-form"/>
 	</action-view>
 	
 	<menuitem title="Invoice" name="gst-root-invoice" parent="gst-root" order="15"/>
@@ -72,29 +81,38 @@
 	
 	<menuitem title="Draft Invoice" name="gst-root-invoice-draftInvoice" parent="gst-root-invoice" action="action.gst.root.invoice.draftInvoice"/>
 	<action-view name="action.gst.root.invoice.draftInvoice" title="Draft Invoices" model="com.axelor.gst.db.Invoice">
+		<view type="grid" name="invoice-grid"/>
 		<view type="form" name="invoice-form"/>
+		<domain>self.statusSelect = 'draft'</domain>
 	</action-view>
 	
 	<menuitem title="Validated Invoice" name="gst-root-invoice-validatedInvoice" parent="gst-root-invoice" action="action.gst.root.invoice.validatedInvoice"/>
 	<action-view name="action.gst.root.invoice.validatedInvoice" title="Validated Invoices" model="com.axelor.gst.db.Invoice">
+		<view type="grid" name="invoice-grid"/>
 		<view type="form" name="invoice-form"/>
+		<domain>self.statusSelect = 'validated'</domain>
 	</action-view>
 	
 	<menuitem title="Paid Invoice" name="gst-root-invoice-paidInvoice" parent="gst-root-invoice" action="action.gst.root.invoice.paidInvoice"/>
 	<action-view name="action.gst.root.invoice.paidInvoice" title="Paid Invoices" model="com.axelor.gst.db.Invoice">
+		<view type="grid" name="invoice-grid"/>
 		<view type="form" name="invoice-form"/>
+		<domain>self.statusSelect = 'paid'</domain>
 	</action-view>
 	
 	<menuitem title="Cancelled Invoice" name="gst-root-invoice-cancelledInvoice" parent="gst-root-invoice" action="action.gst.root.invoice.cancelledInvoice"/>
 	<action-view name="action.gst.root.invoice.cancelledInvoice" title="Cancelled Invoices" model="com.axelor.gst.db.Invoice">
+		<view type="grid" name="invoice-grid"/>
 		<view type="form" name="invoice-form"/>
+		<domain>self.statusSelect = 'cancelled'</domain>
 	</action-view>
 	
 	<menuitem title="All Invoice" name="gst-root-invoice-allInvoice" parent="gst-root-invoice" action="action.gst.root.invoice.allInvoice"/>
 	<action-view name="action.gst.root.invoice.allInvoice" title="All Invoices" model="com.axelor.gst.db.Invoice">
+		<view type="kanban" name="invoice-kanban"/>
 		<view type="grid" name="invoice-grid"/>
 		<view type="form" name="invoice-form"/>
-		<view type="kanban" name="invoice-kanban"/>
+		
 	</action-view>
 	
 	<menuitem title="Company" name="gst-root-company" parent="gst-root" order="20"/>
@@ -107,8 +125,8 @@
 	
 	<menuitem title="Bank Account" name="gst-root-company-bankAccount" parent="gst-root-company" action="action.gst.root.company.bankAccount" />
 	<action-view name="action.gst.root.company.bankAccount" title="Bank Accounts" model="com.axelor.gst.db.BankAccount">
-		<view type="grid" name="bankAccount-grid"/>
-		<view type="form" name="bankAccount-form"/>
+		<view type="grid" name="bank-account-grid"/>
+		<view type="form" name="bank-account-form"/>
 	</action-view>
 	
 	<menuitem title="Sequence" name="gst-root-company-sequence" parent="gst-root-company" action="action.gst.root.company.sequence" />

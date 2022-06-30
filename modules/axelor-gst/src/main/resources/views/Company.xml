@@ -17,9 +17,8 @@
 	 		<field name="address"/>
 		</panel>
 		<panel-tabs>
-			<panel-related field="bankAccountList" colSpan="12" form-view="bankAccount-popup-form" grid-view="bankAccount-grid"/>
-			<panel-related field="contactList" colSpan="12" form-view="contactList-popup-form" grid-view="contact-grid"/>
-			<panel title="Contacts Editor">
+			<panel-related field="bankAccountList" colSpan="12" form-view="bank-account-form" grid-view="bank-account-grid"/>
+			<panel title="Contacts">
 				<field name="contactList" showTitle="false">
 					<editor x-viewer="true">
 						<field name="name"/>

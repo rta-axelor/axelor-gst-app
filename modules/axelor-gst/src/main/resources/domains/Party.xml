@@ -17,7 +17,7 @@
   	<one-to-many ref="com.axelor.gst.db.Contact" 
   		name="contactList" title="Contact" />
   	<one-to-many ref="com.axelor.gst.db.Address" 
-  		name="addressList" title="Address"/>
+  		name="addressList" title="Address" mappedBy="party"/>
 
   </entity>
   

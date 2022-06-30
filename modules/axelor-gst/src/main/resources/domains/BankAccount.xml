@@ -10,7 +10,7 @@
   		<string name="accountNo" title="Account No" required="true"/>
   		<string name="ifsc" title="IFSC" required="true"/>
   		<string name="typeSelect" title="Type" selection="gst.bankaccount.type.select"/>
-  		<string name="address" title="Address" large="true"/>
+  		<string name="address" title="Address" large="true" />
 
   	</entity>
   
