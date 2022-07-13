@@ -147,5 +147,7 @@
 	 			   name="print-invoice"
 	  			   design="Invoice.rptdesign">
 	  			   <param name="invoiceId" expr="eval: id"/>
+	  			   <param name="AttachmentPath" expr="eval:com.axelor.app.AppSettings.get().get('file.upload.dir') " />
+	  			   
 	 </action-report>
 </object-views>

@@ -5,15 +5,11 @@
 
   	<grid model="com.axelor.gst.db.Product" title="Products" name="product-grid">
   		<toolbar>
-  			<button onClick="act1" name="btnNewInvoice" title="Create Invoice!" icon="fa-print"/>
-  			<button onClick="act2" name="btnInvoiceReport" title="Print Report" icon="fa-print"/>
+  			<button onClick="action-product-view-create-invoice" name="btnNewInvoice" title="Create Invoice!" icon="fa-print"/>
+  			<button onClick="action-product-report-print-invoice" name="btnInvoiceReport" title="Print Report" icon="fa-print"/>
   		</toolbar>
-  		<menubar>
-  			<menu title="Buttons">
-  				<item action="act1" title="Create Invoice"/>
-  				<item action="act2" title="Print Report"/>
-  			</menu>
-  		</menubar>
+
+  		
   		<field name="name"/>
   		<field name="category"/>
   		<field name="salePrice"/>
@@ -28,7 +24,7 @@
   		<field name="category" onChange="action-product-record-onchange"/>
   		<field name="salePrice"/>
   		<field name="costPrice"/>
-  		<field name="image"/>
+  		<field name="image" widget="Image"/>
   		<field name="gstRate"/>
   		</panel>
   	</form>
@@ -64,5 +60,17 @@
   	<action-record name="action-product-record-onchange" model="com.axelor.gst.db.Product">
   		<field name="gstRate" expr="eval: category.gstRate "/>
   	</action-record>
+  	<action-view name="action-product-view-create-invoice" title="Invoice" model="com.axelor.gst.db.Invoice">
+  		<view type="form" name="invoice-form" />
+  		<context name="products" expr="eval:_ids" />
+  	</action-view>
+  	<action-report output="PIR-${date}${time}" 
+  		name="action-product-report-print-invoice" 
+  		design="Product.rptdesign">
+  		 <param name="productIds" if="__ids__" expr="eval:__ids__.join(',')" />
+  		 <param name="AttachmentPath"
+      expr="eval: com.axelor.app.AppSettings.get().getPath('file.upload.dir','') + '/'"/>
+
+  	</action-report>
   
 </object-views>
